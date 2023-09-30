@@ -1,0 +1,55 @@
+---
+import Header from "@components/Header.astro";
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout
+  title="コンタクトフォーム"
+  description="NewtとAstroを利用した問い合わせフォームです"
+>
+  <Header />
+  <div class="contact-wrapper">
+    <div>
+      <h1 class="h1">Contact us</h1>
+      <form
+        class="form"
+        action="https://kapucode.form.newt.so/v1/dgqieIpjw"
+        method="post"
+      >
+        <div>
+          <div>
+            <label for="name">Name</label>
+            <input class="input" id="name" name="name" />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input class="input" id="email" name="email" type="email" />
+            <div>
+              <label for="message">Message</label>
+              <textarea class="input" id="message" name="message"></textarea>
+            </div>
+
+            <button class="button" type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</Layout>
+<style>
+  .contact-wrapper {
+    @apply mx-auto mt-10 flex w-52 justify-center;
+  }
+  .h1 {
+    @apply text-2xl font-bold;
+  }
+  .form {
+    @apply mx-auto flex w-full;
+  }
+  .input {
+    @apply border-b-2;
+  }
+  .button {
+    @apply flex max-w-xs justify-center border-none px-4 py-2;
+  }
+</style>
