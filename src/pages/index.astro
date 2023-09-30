@@ -23,7 +23,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   <Header />
   <main id="main-content">
     <section id="hero">
-      <h1 class="mr-2">Mingalaba</h1>
+      <h1 class="mr-2">iroiro</h1>
       <a
         target="_blank"
         href="/rss.xml"
@@ -41,19 +41,16 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       </a>
 
       <p>
-        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
-        blog theme. This theme follows best practices and provides accessibility
-        out of the box. Light and dark mode are supported by default. Moreover,
-        additional color schemes can also be configured.
+        すぐに忘れるのでここに頭を置いていきます。3ヶ月後の自分のためにやったことをまとめる。
       </p>
       <p>
-        Read the blog posts or check
+        サボってないかチェックする
         <LinkButton
           className="hover:text-skin-accent underline underline-offset-4 decoration-dashed"
-          href="https://github.com/satnaing/astro-paper#readme"
+          href="https://github.com/ryotarofr"
         >
-          README
-        </LinkButton> for more info.
+          ~README~
+        </LinkButton>
       </p>
       {
         // only display if at least one social link is enabled
@@ -72,7 +69,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       featuredPosts.length > 0 && (
         <>
           <section id="featured">
-            <h2>Featured</h2>
+            <h2>ノート</h2>
             <ul>
               {featuredPosts.map(({ data }) => (
                 <Card
@@ -83,39 +80,39 @@ const socialCount = SOCIALS.filter(social => social.active).length;
               ))}
             </ul>
           </section>
+          <div class="all-posts-btn-wrapper">
+            <LinkButton href="/posts">
+              All Posts
+              <svg xmlns="http://www.w3.org/2000/svg">
+                <path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z" />
+              </svg>
+            </LinkButton>
+          </div>
           <Hr />
         </>
       )
     }
 
     <section id="recent-posts">
-      <h2>Recent Posts</h2>
-      <ul>
+      <h2>メモ置き場</h2>
+      <ul class="memo-wrapper">
         {
           sortedPosts
             .filter(({ data }) => !data.featured)
             .map(
               ({ data }, index) =>
                 index < 4 && (
-                  <Card
-                    href={`/posts/${slugify(data)}`}
-                    frontmatter={data}
-                    secHeading={false}
-                  />
+                  <div class="memo-card">
+                    <Card
+                      href={`/posts/${slugify(data)}`}
+                      frontmatter={data}
+                      secHeading={false}
+                    />
+                  </div>
                 )
             )
         }
       </ul>
-      <div class="all-posts-btn-wrapper">
-        <LinkButton href="/posts">
-          All Posts
-          <svg xmlns="http://www.w3.org/2000/svg"
-            ><path
-              d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
-            ></path>
-          </svg>
-        </LinkButton>
-      </div>
     </section>
   </main>
 
@@ -123,6 +120,13 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 </Layout>
 
 <style>
+  /* 追加スタイル */
+  .memo-wrapper {
+    @apply flex flex-wrap;
+  }
+  .memo-card {
+    @apply md:w-1/2 p-4;
+  }
   /* ===== Hero Section ===== */
   #hero {
     @apply pb-6 pt-8;
