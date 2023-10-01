@@ -1,0 +1,63 @@
+---
+import { getCollection } from "astro:content";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Layout from "@layouts/Layout.astro";
+import Main from "@layouts/Main.astro";
+import Tag from "@components/Tag.astro";
+import getUniqueTags from "@utils/getUniqueTags";
+import { SITE } from "@config";
+
+const posts = await getCollection("blog");
+
+// let tags = getUniqueTags(posts);
+---
+
+<Layout title={`サイトについて | ${SITE.title}`}>
+  <Header activeNav="サイトについて" />
+  <Main pageTitle="このサイトについて">
+    <div class="section1">
+      <div>
+        こんにちは、当サイト「カプリコの森」に遊びに来ていただき、ありがとうございます。
+      </div>
+      <br />
+      <div>
+        このサイトカプリコの森は、管理人カプコードさんの個人ブログです。以下のような内容を発信しています。
+      </div>
+      <br />
+      <ul class="ul">
+        <li>カプコードさんの考えについて</li>
+        <li>Web・モバイル技術のトレンドやドメイン知識の情報について</li>
+        <li>個人開発で作ったアプリについて</li>
+      </ul>
+      <br />
+      <hr class="hr" />
+      <div class="profile">著者のプロフィール</div>
+      <hr class="hr" />
+      <img src="/profile.jpeg" width="200px" class="img" />
+      <div>カプコードさん</div>
+      <div>
+        <!-- あとでかく -->
+      </div>
+    </div>
+  </Main>
+  <Footer />
+</Layout>
+
+<style>
+  .section1 {
+    @apply mx-auto my-4 w-full max-w-lg;
+  }
+  .ul {
+    @apply mx-7 list-disc;
+  }
+  .hr {
+    @apply my-2;
+  }
+  .profile {
+    @apply mx-4;
+  }
+  .img {
+    @apply mx-auto rounded-full;
+  }
+</style>
