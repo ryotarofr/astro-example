@@ -1,0 +1,523 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/logo.png"><link rel="canonical" href="https://astro-paper.pages.dev/posts/nestjs-tutrial-todo-app/"><meta name="generator" content="Astro v3.1.3"><!-- General Meta Tags --><title>NestJsチュートリアル</title><meta name="title" content="NestJsチュートリアル"><meta name="description" content="NestJsでtodoアプリを作っていきます。このチュートリアルw見ればNestJsの基本的はことは理解できます。"><meta name="author" content="kapucode"><link rel="sitemap" href="/sitemap-index.xml"><!-- Open Graph / Facebook --><meta property="og:title" content="NestJsチュートリアル"><meta property="og:description" content="NestJsでtodoアプリを作っていきます。このチュートリアルw見ればNestJsの基本的はことは理解できます。"><meta property="og:url" content="https://astro-paper.pages.dev/posts/nestjs-tutrial-todo-app/"><meta property="og:image" content="https://astro-paper.pages.dev/posts/nestjs%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://astro-paper.pages.dev/posts/nestjs-tutrial-todo-app/"><meta property="twitter:title" content="NestJsチュートリアル"><meta property="twitter:description" content="NestJsでtodoアプリを作っていきます。このチュートリアルw見ればNestJsの基本的はことは理解できます。"><meta property="twitter:image" content="https://astro-paper.pages.dev/posts/nestjs%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB.png"><!-- Google Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet"><meta name="theme-color" content=""><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- google アドセンス　設定 --><!-- 広告 --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5112185578414045" crossorigin="anonymous"></script><!-- 広告損益の回収申告 --><script async src="https://fundingchoicesmessages.google.com/i/pub-5112185578414045?ers=1" nonce="HMJQo9KJ2O48OU1iQYuTKQ"></script><script nonce="HMJQo9KJ2O48OU1iQYuTKQ">
+      (function () {
+        function signalGooglefcPresent() {
+          if (!window.frames["googlefcPresent"]) {
+            if (document.body) {
+              const iframe = document.createElement("iframe");
+              iframe.style =
+                "width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;";
+              iframe.style.display = "none";
+              iframe.name = "googlefcPresent";
+              document.body.appendChild(iframe);
+            } else {
+              setTimeout(signalGooglefcPresent, 0);
+            }
+          }
+        }
+        signalGooglefcPresent();
+      })();
+    </script><script src="/toggle-theme.js"></script><link rel="stylesheet" href="/_astro/about.baf26d29.css" />
+<style>.breadcrumb:where(.astro-ilhxcym7){margin-left:auto;margin-right:auto;margin-bottom:.25rem;margin-top:2rem;width:100%;max-width:48rem;padding-left:1rem;padding-right:1rem}.breadcrumb:where(.astro-ilhxcym7) ul:where(.astro-ilhxcym7) li:where(.astro-ilhxcym7){display:inline}.breadcrumb:where(.astro-ilhxcym7) ul:where(.astro-ilhxcym7) li:where(.astro-ilhxcym7) a:where(.astro-ilhxcym7){text-transform:capitalize;opacity:.7}.breadcrumb:where(.astro-ilhxcym7) ul:where(.astro-ilhxcym7) li:where(.astro-ilhxcym7) span:where(.astro-ilhxcym7){opacity:.7}.breadcrumb:where(.astro-ilhxcym7) ul:where(.astro-ilhxcym7) li:where(.astro-ilhxcym7):not(:last-child) a:where(.astro-ilhxcym7):hover{opacity:1}
+#main-content:where(.astro-hsp6otuf){margin-left:auto;margin-right:auto;width:100%;max-width:48rem;padding-left:1rem;padding-right:1rem;padding-bottom:3rem}#main-content:where(.astro-hsp6otuf) h1:where(.astro-hsp6otuf){font-size:1.5rem;line-height:2rem;font-weight:600}@media (min-width: 640px){#main-content:where(.astro-hsp6otuf) h1:where(.astro-hsp6otuf){font-size:1.875rem;line-height:2.25rem}}#main-content:where(.astro-hsp6otuf) p:where(.astro-hsp6otuf){margin-bottom:1.5rem;margin-top:.5rem;font-style:italic}
+a:where(.astro-blwjyjpt){position:relative;text-decoration-line:underline;text-decoration-style:dashed}a:where(.astro-blwjyjpt):hover{top:-.125rem;--tw-text-opacity: 1;color:rgba(var(--color-accent),var(--tw-text-opacity))}a:where(.astro-blwjyjpt):focus-visible{padding:.25rem}a:where(.astro-blwjyjpt) svg:where(.astro-blwjyjpt){margin-right:-1.25rem;height:1.5rem;width:1.5rem;--tw-scale-x: .95;--tw-scale-y: .95;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));--tw-text-opacity: 1;color:rgba(var(--color-text-base),var(--tw-text-opacity));opacity:.8}.group:where(.astro-blwjyjpt):hover a:where(.astro-blwjyjpt) svg:where(.astro-blwjyjpt){fill:rgb(var(--color-accent))}
+a:where(.astro-5eunqzkt):hover{--tw-text-opacity: 1;color:rgba(var(--color-accent),var(--tw-text-opacity))}
+@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0}}@keyframes astroFadeOut{to{opacity:0}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+.social-icons:where(.astro-upu6fzxr){flex-wrap:wrap;justify-content:center;gap:.25rem}.link-button:where(.astro-upu6fzxr){padding:.5rem}.link-button:where(.astro-upu6fzxr):hover{--tw-rotate: 6deg;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@media (min-width: 640px){.link-button:where(.astro-upu6fzxr){padding:.25rem}}footer:where(.astro-sz7xmlte){width:100%}.footer-wrapper:where(.astro-sz7xmlte){display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding-top:1.5rem;padding-bottom:1.5rem}@media (min-width: 640px){.footer-wrapper:where(.astro-sz7xmlte){flex-direction:row-reverse;padding-top:1rem;padding-bottom:1rem}}.link-button:where(.astro-sz7xmlte){margin-top:.25rem;margin-bottom:.25rem;padding:.5rem}.link-button:where(.astro-sz7xmlte):hover{--tw-rotate: 6deg;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.link-button:where(.astro-sz7xmlte) svg:where(.astro-sz7xmlte){--tw-scale-x: 1.25;--tw-scale-y: 1.25;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.copyright-wrapper:where(.astro-sz7xmlte){margin-top:.5rem;margin-bottom:.5rem;display:flex;flex-direction:column;align-items:center;white-space:nowrap}@media (min-width: 640px){.copyright-wrapper:where(.astro-sz7xmlte){flex-direction:row}}.separator:where(.astro-sz7xmlte){display:none}@media (min-width: 640px){.separator:where(.astro-sz7xmlte){display:inline}}
+main:where(.astro-vj4tpspi){margin-left:auto;margin-right:auto;width:100%;max-width:48rem;padding-left:1rem;padding-right:1rem;padding-bottom:3rem}.post-title:where(.astro-vj4tpspi){font-size:1.5rem;line-height:2rem;font-weight:600;--tw-text-opacity: 1;color:rgba(var(--color-accent),var(--tw-text-opacity))}.tags-container:where(.astro-vj4tpspi){margin-top:2rem;margin-bottom:2rem}
+.pagination-wrapper:where(.astro-eenky23y){margin-bottom:2rem;margin-top:auto;display:flex;justify-content:center}.disabled:where(.astro-eenky23y){pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none;opacity:.5}.disabled:where(.astro-eenky23y):hover{--tw-text-opacity: 1;color:rgba(var(--color-text-base),var(--tw-text-opacity))}.group:where(.astro-eenky23y):hover .disabled:where(.astro-eenky23y){fill:rgb(var(--color-text-base))}.group:where(.astro-eenky23y):hover .disabled-svg:where(.astro-eenky23y){fill:rgb(var(--color-text-base))!important}
+</style><script type="module" src="/_astro/hoisted.1065d2a3.js"></script><style>[data-astro-transition-scope="astro-plk3gbjq-1"] { view-transition-name: nestjs; }@layer astro { ::view-transition-old(nestjs) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(nestjs) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(nestjs) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(nestjs) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-plk3gbjq-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-plk3gbjq-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-plk3gbjq-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-plk3gbjq-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-plk3gbjq-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-plk3gbjq-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-plk3gbjq-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-plk3gbjq-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-36ssibgs-2"] { view-transition-name: nestjs; }@layer astro { ::view-transition-old(nestjs) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(nestjs) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(nestjs) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(nestjs) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head><body><header class="astro-3ef6ksr2"><a id="skip-to-content" href="#main-content" class="astro-3ef6ksr2">Skip to content</a><div class="nav-container astro-3ef6ksr2"><div class="top-nav-wrap astro-3ef6ksr2"><a href="/" class="logo whitespace-nowrap astro-3ef6ksr2">カプリコの森</a><nav id="nav-menu" class="astro-3ef6ksr2"><button class="hamburger-menu focus-outline astro-3ef6ksr2" aria-label="Open Menu" aria-expanded="false" aria-controls="menu-items"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="menu-icon astro-3ef6ksr2"><line x1="7" y1="12" x2="21" y2="12" class="line astro-3ef6ksr2"></line><line x1="3" y1="6" x2="21" y2="6" class="line astro-3ef6ksr2"></line><line x1="12" y1="18" x2="21" y2="18" class="line astro-3ef6ksr2"></line><line x1="18" y1="6" x2="6" y2="18" class="close astro-3ef6ksr2"></line><line x1="6" y1="6" x2="18" y2="18" class="close astro-3ef6ksr2"></line></svg></button><ul id="menu-items" class="display-none sm:flex astro-3ef6ksr2"><li class="astro-3ef6ksr2"><a href="/posts" class=" astro-3ef6ksr2">
+Posts
+</a></li><li class="astro-3ef6ksr2"><a href="/tags" class=" astro-3ef6ksr2">
+Tags
+</a></li><li class="astro-3ef6ksr2"><a href="/about" class=" astro-3ef6ksr2">
+About
+</a></li><li class="astro-3ef6ksr2"><a href="/search" tabindex="0" class="group inline-block focus-outline p-3 sm:p-1  flex astro-3ef6ksr2 astro-5eunqzkt" aria-label="search" title="Search"><svg xmlns="http://www.w3.org/2000/svg" class="scale-125 sm:scale-100 astro-3ef6ksr2"><path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z" class="astro-3ef6ksr2"></path></svg></a></li><li class="astro-3ef6ksr2"><button id="theme-btn" class="focus-outline astro-3ef6ksr2" title="Toggles light & dark" aria-label="auto" aria-live="polite"><svg xmlns="http://www.w3.org/2000/svg" id="moon-svg" class="astro-3ef6ksr2"><path d="M20.742 13.045a8.088 8.088 0 0 1-2.077.271c-2.135 0-4.14-.83-5.646-2.336a8.025 8.025 0 0 1-2.064-7.723A1 1 0 0 0 9.73 2.034a10.014 10.014 0 0 0-4.489 2.582c-3.898 3.898-3.898 10.243 0 14.143a9.937 9.937 0 0 0 7.072 2.93 9.93 9.93 0 0 0 7.07-2.929 10.007 10.007 0 0 0 2.583-4.491 1.001 1.001 0 0 0-1.224-1.224zm-2.772 4.301a7.947 7.947 0 0 1-5.656 2.343 7.953 7.953 0 0 1-5.658-2.344c-3.118-3.119-3.118-8.195 0-11.314a7.923 7.923 0 0 1 2.06-1.483 10.027 10.027 0 0 0 2.89 7.848 9.972 9.972 0 0 0 7.848 2.891 8.036 8.036 0 0 1-1.484 2.059z" class="astro-3ef6ksr2"></path></svg><svg xmlns="http://www.w3.org/2000/svg" id="sun-svg" class="astro-3ef6ksr2"><path d="M6.993 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007S14.761 6.993 12 6.993 6.993 9.239 6.993 12zM12 8.993c1.658 0 3.007 1.349 3.007 3.007S13.658 15.007 12 15.007 8.993 13.658 8.993 12 10.342 8.993 12 8.993zM10.998 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2h-3zm17 0h3v2h-3zM4.219 18.363l2.12-2.122 1.415 1.414-2.12 2.122zM16.24 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.342 7.759 4.22 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z" class="astro-3ef6ksr2"></path></svg></button></li></ul></nav></div></div><div class="max-w-3xl mx-auto px-4"><hr class="border-skin-line" aria-hidden="true"></div></header><div class="mx-auto flex w-full max-w-3xl justify-start px-2 astro-vj4tpspi"><button class="focus-outline mb-2 mt-8 flex hover:opacity-75 astro-vj4tpspi" onclick="history.back()"><svg xmlns="http://www.w3.org/2000/svg" class="astro-vj4tpspi"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z" class="astro-vj4tpspi"></path></svg><span class="astro-vj4tpspi">Go back</span></button></div><main id="main-content" class="astro-vj4tpspi"><h1 class="post-title astro-vj4tpspi" data-astro-transition-scope="astro-plk3gbjq-1">NestJsチュートリアル</h1><div class="flex items-center space-x-2 opacity-80 my-2 astro-vj4tpspi"><svg xmlns="http://www.w3.org/2000/svg" class="scale-100 inline-block h-6 w-6 fill-skin-base" aria-hidden="true"><path d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"></path><path d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"></path></svg><span class="sr-only">Posted on:</span><span class="italic text-base">October 2, 2022<span aria-hidden="true"> | </span><span class="sr-only"> at </span>12:30 AM</span></div><article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl astro-vj4tpspi"><h2 id="table-of-contents">Table of contents</h2>
+<p></p><details><summary>Open Table of contents</summary><p></p>
+<ul>
+<li><a href="#%E3%81%A7%E3%81%8D%E3%81%82%E3%81%8C%E3%81%A3%E3%81%9F%E3%82%82%E3%81%AE">できあがったもの</a>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A4%8E%E3%82%92%E7%B6%B2%E7%BE%85%E3%81%A7%E3%81%8D%E3%82%8B%E5%84%AA%E7%A7%80%E3%81%AA%E3%82%B5%E3%82%A4%E3%83%88">基礎を網羅できる優秀なサイト</a></li>
+</ul>
+</li>
+<li><a href="#nestjs-cli-%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">nestJs cli インストール</a></li>
+</ul>
+</li>
+<li><a href="#todo%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%84%E3%81%8F">todoアプリを作っていく</a>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%A4%A7%E3%81%BE%E3%81%8B%E3%81%AA%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9%E8%87%AA%E5%B7%B1%E6%B5%81%E3%81%A7%E3%81%99">大まかなデータベースの作り方(＊自己流です)</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%9F%E9%9A%9B%E3%81%AB%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%84%E3%81%8D%E3%81%BE%E3%81%99">実際にコードを書いていきます</a>
+<ul>
+<li>
+<ul>
+<li><a href="#prisma%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><code>Prisma</code>のインストール</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#postgressql">PostgresSQL</a></li>
+<li><a href="#prisma%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E4%BD%9C%E6%88%90"><code>Prisma</code>でデータベース作成</a></li>
+<li><a href="#nestjs%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%84%E3%81%8D%E3%81%BE%E3%81%99"><code>NestJs</code>のコードを書いていきます</a></li>
+<li><a href="#post%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%AE%E4%BD%9C%E6%88%90">Postメソッドの作成</a>
+<ul>
+<li><a href="#%E5%AE%9F%E9%9A%9B%E3%81%AB%E3%82%BF%E3%82%B9%E3%82%AF%E3%81%8C%E8%BF%BD%E5%8A%A0%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%8B%E7%A2%BA%E8%AA%8D%E3%81%97%E3%81%A6%E3%81%84%E3%81%8D%E3%81%BE%E3%81%99">実際にタスクが追加できるか確認していきます。</a></li>
+</ul>
+</li>
+<li><a href="#%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E8%BF%BD%E5%8A%A0">バリデーションを追加</a></li>
+<li><a href="#update%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E4%BD%9C%E6%88%90"><code>Update</code>メソッド作成</a></li>
+<li><a href="#%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E8%BF%BD%E5%8A%A0">バリデーション追加</a></li>
+</ul>
+</li>
+</ul>
+<p></p></details><p></p>
+<h2 id="できあがったもの">できあがったもの</h2>
+<ul>
+<li><a href="https://github.com/ryotarofr/nest-tutrial">作成したソースコード</a></li>
+</ul>
+<h4 id="基礎を網羅できる優秀なサイト">基礎を網羅できる優秀なサイト</h4>
+<br>
+- [todoアプリを作ってるサイト](https://zenn.dev/mikakane/books/nestjs-tutorial/viewer)(参考にさせて頂きました)
+- [ライフサイクルについて](https://zenn.dev/kisihara_c/books/nest-officialdoc-jp/viewer/fundamentals-lifecycleevents)
+<h3 id="nestjs-cli-インストール">nestJs cli インストール</h3>
+<p>ますはnestJsをPCで使うために cli をインストールします。</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #abb2bf">$ npm i -g @nestjs/cli</span></span></code></pre>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #abb2bf">$ yarn global add @nestjs/cli</span></span></code></pre>
+<h2 id="todoアプリを作っていく">todoアプリを作っていく</h2>
+<h4 id="大まかなデータベースの作り方自己流です">大まかなデータベースの作り方(＊自己流です)</h4>
+<p>今回はtodoタスクを作るのでその流れで説明します。</p>
+<ol>
+<li>タスクのデータを作って<code>PrismaClient</code>へ送る</li>
+<li><code>NestJs</code>でデータ呼び出し用のファイルを作る・・・このファイルを今回は「サービス」と呼びます。</li>
+<li>コントローラーでサービスのメソッドを指定する</li>
+<li>サービスをアプリケーション全体に拡張する</li>
+</ol>
+<p>大体こんな感じです。</p>
+<h3 id="実際にコードを書いていきます">実際にコードを書いていきます</h3>
+<p>データベースを作る</p>
+<p>今回は<code>Prisma</code>を使います。(NestJsメインなのでp<code>Prisma</code>の説明はしていません)</p>
+<p><a href="https://www.prisma.io/"><code>Prisma</code>の公式サイトです</a></p>
+<h5 id="prismaのインストール"><code>Prisma</code>のインストール</h5>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #abb2bf">$ npm i prisma</span></span></code></pre>
+<p><code>Prisma</code>の初期ファイルを用意</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #abb2bf">$ npx prisma init</span></span></code></pre>
+<p>このコマンドを実行することで以下の処理が実行されます。</p>
+<ul>
+<li><code>.env</code> ファイルの追加</li>
+<li><code>prisma/schema.prisma</code> の生成</li>
+</ul>
+<p>ファイルの生成が確認できたら、生成された <code>.env</code> に Database の接続情報を記述していきます。</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #7F848E; font-style: italic"># Environment variables declared in this file are automatically made available to Prisma.</span></span>
+<span class="line"><span style="color: #7F848E; font-style: italic"># See the documentation for more detail: https://pris.ly/d/prisma-schema#accessing-environment-variables-from-the-schema</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #7F848E; font-style: italic"># Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB.</span></span>
+<span class="line"><span style="color: #7F848E; font-style: italic"># See the documentation for all the connection string options: https://pris.ly/d/connection-strings</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E06C75">DATABASE_URL</span><span style="color: #56B6C2">=</span><span style="color: #98C379">"postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"</span></span></code></pre>
+<p>ここまでで、Prisma を用いて Database に接続する準備は完了です。</p>
+<h3 id="postgressql">PostgresSQL</h3>
+<p>PrismaでPostGresSQLを使うので</p>
+<ul>
+<li>ユーザー名</li>
+<li>パスワード</li>
+</ul>
+<p>が必要になります。</p>
+<p>今回は psql のターミナルを使います。以下のサイトからダウンロードできます。</p>
+<p>データベースの作成</p>
+<p><code>nestJsTutrial</code>というデータベースを作ります</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #abb2bf">postgres=# CREATE DATABASE nestJsTutrial;</span></span></code></pre>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #abb2bf">CREATE DATABASE</span></span></code></pre>
+<p>データベースに接続</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #abb2bf">postgres=# \c nestjstutrial</span></span></code></pre>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #abb2bf">You are now connected to database "nestjstutrial" as user "postgres".</span></span>
+<span class="line"><span style="color: #abb2bf">nestjstutrial=# </span></span></code></pre>
+<p>データベースが作成できているか確認してみましょう！</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #abb2bf">postgres=# \l</span></span></code></pre>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #abb2bf">                                    List of databases</span></span>
+<span class="line"><span style="color: #abb2bf">     Name      |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges   </span></span>
+<span class="line"><span style="color: #abb2bf">---------------+----------+----------+-------------+-------------+-----------------------</span></span>
+<span class="line"><span style="color: #abb2bf"> diary_report  | postgres | UTF8     | ja_JP.UTF-8 | ja_JP.UTF-8 | </span></span>
+<span class="line"><span style="color: #abb2bf"> nestjstutrial | postgres | UTF8     | ja_JP.UTF-8 | ja_JP.UTF-8 | </span></span>
+<span class="line"><span style="color: #abb2bf"> postgres      | postgres | UTF8     | ja_JP.UTF-8 | ja_JP.UTF-8 | </span></span>
+<span class="line"><span style="color: #abb2bf"> private_diary | postgres | UTF8     | ja_JP.UTF-8 | ja_JP.UTF-8 | </span></span>
+<span class="line"><span style="color: #abb2bf"> template0     | postgres | UTF8     | ja_JP.UTF-8 | ja_JP.UTF-8 | =c/postgres          +</span></span>
+<span class="line"><span style="color: #abb2bf">               |          |          |             |             | postgres=CTc/postgres</span></span>
+<span class="line"><span style="color: #abb2bf"> template1     | postgres | UTF8     | ja_JP.UTF-8 | ja_JP.UTF-8 | =c/postgres          +</span></span>
+<span class="line"><span style="color: #abb2bf">               |          |          |             |             | postgres=CTc/postgres</span></span></code></pre>
+<p><code>nestjstutrial</code>があることが確認できます。</p>
+<h3 id="prismaでデータベース作成"><code>Prisma</code>でデータベース作成</h3>
+<p>データデーブル作成</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #ABB2BF">model Task {</span></span>
+<span class="line"><span style="color: #ABB2BF">  id    </span><span style="color: #C678DD">Int</span><span style="color: #ABB2BF">     </span><span style="color: #E06C75">@id</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">@default</span><span style="color: #ABB2BF">(autoincrement())</span></span>
+<span class="line"><span style="color: #ABB2BF">  title String  </span><span style="color: #E06C75">@unique</span></span>
+<span class="line"><span style="color: #ABB2BF">  due_on  </span><span style="color: #C678DD">DateTime</span><span style="color: #ABB2BF">? </span></span>
+<span class="line"><span style="color: #ABB2BF">  is_done </span><span style="color: #C678DD">Boolean</span><span style="color: #ABB2BF">  </span><span style="color: #E06C75">@default</span><span style="color: #ABB2BF">(false)</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span></code></pre>
+<p>このコマンドでデーブルを生成します</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #abb2bf">$ npx prisma migrate dev --name todo</span></span></code></pre>
+<h3 id="nestjsのコードを書いていきます"><code>NestJs</code>のコードを書いていきます</h3>
+<p>Src/prisma/prisma.service.ts</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> { </span><span style="color: #E06C75">Injectable</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">OnModuleInit</span><span style="color: #ABB2BF"> } </span><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">'@nestjs/common'</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> { </span><span style="color: #E06C75">PrismaClient</span><span style="color: #ABB2BF"> } </span><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">'@prisma/client'</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">@</span><span style="color: #61AFEF">Injectable</span><span style="color: #ABB2BF">()</span></span>
+<span class="line"><span style="color: #C678DD">export</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">class</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">PrismaService</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">extends</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">PrismaClient</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">implements</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">OnModuleInit</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">async</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">onModuleInit</span><span style="color: #ABB2BF">() {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">await</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">this</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">$connect</span><span style="color: #ABB2BF">();</span></span>
+<span class="line"><span style="color: #ABB2BF">  }</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span></code></pre>
+<p><code>OnModuleInit</code>インターフェースを実装することで、<code>PrismaService</code>クラスは<code>onModuleInit</code>メソッドを持ち、NestJSのライフサイクルフックである<code>onModuleInit</code>と連携します。<code>onModuleInit</code>メソッドは、NestJSのモジュールが初期化された後に自動的に呼び出されます。</p>
+<p><code>onModuleInit</code>メソッド内では、<code>$connect</code>メソッドが呼び出されています。これにより、<code>PrismaClient</code>がデータベースに接続し、アプリケーションが起動する前にデータベースとの接続が確立されます。</p>
+<p>Src/todo/todo.controller.ts</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> { </span><span style="color: #E06C75">Controller</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">Get</span><span style="color: #ABB2BF"> } </span><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">'@nestjs/common'</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> { </span><span style="color: #E06C75">PrismaService</span><span style="color: #ABB2BF"> } </span><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">'src/prisma/prisma.service'</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">@</span><span style="color: #61AFEF">Controller</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">'todo'</span><span style="color: #ABB2BF">) </span><span style="color: #7F848E; font-style: italic">// コントローラクラスの宣言とパスの指定</span></span>
+<span class="line"><span style="color: #C678DD">export</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">class</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">TodoController</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">constructor</span><span style="color: #ABB2BF">( </span><span style="color: #7F848E; font-style: italic">//説明①</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">private</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75; font-style: italic">prisma</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">PrismaService</span></span>
+<span class="line"><span style="color: #ABB2BF">  ) { }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  @</span><span style="color: #61AFEF">Get</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">"list"</span><span style="color: #ABB2BF">) </span><span style="color: #7F848E; font-style: italic">// HTTP メソドとパスの指定</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">async</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">getList</span><span style="color: #ABB2BF">() { </span><span style="color: #7F848E; font-style: italic">//説明②</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">result</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">await</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">this</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">prisma</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">task</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">findMany</span><span style="color: #ABB2BF">()</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">return</span><span style="color: #ABB2BF"> [</span></span>
+<span class="line"><span style="color: #ABB2BF">      ...</span><span style="color: #E06C75">result</span></span>
+<span class="line"><span style="color: #ABB2BF">    ]</span></span>
+<span class="line"><span style="color: #ABB2BF">  }</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span></code></pre>
+<p><strong>説明①</strong></p>
+<p>NestJSでは、依存性注入（Dependency Injection, DI）がサポートされており、コンポーネント（サービスやコントローラーなど）の依存関係を自動的に解決できます。このコンストラクタの引数である<code>private prisma: PrismaService</code>は、DIによって<code>PrismaService</code>のインスタンスが自動的に注入されることを意味します。</p>
+<p>具体的に説明すると:</p>
+<ol>
+<li><code>private prisma: PrismaService</code>は、コンストラクタの引数として<code>prisma</code>という変数を定義しています。<code>private</code>修飾子を付けることで、この変数はクラス内でのみアクセス可能なプライベートメンバーとなります。</li>
+<li><code>PrismaService</code>は、先ほど定義した<code>PrismaService</code>クラスの型です。この型情報により、DIシステムがどのサービスを注入すべきかを識別します。</li>
+<li>コンストラクタの中では、<code>this.prisma</code>を使って<code>PrismaService</code>のメソッドにアクセスできます。DIによって、<code>PrismaService</code>のインスタンスが自動的に<code>prisma</code>変数に割り当てられるので、<code>this.prisma</code>を使って<code>PrismaService</code>のメソッドを呼び出すことができます。</li>
+</ol>
+<p>このように、コンストラクタの引数にサービスクラスを定義することで、そのクラスのインスタンスが自動的に注入され、クラス内で利用できるようになります。これにより、コントローラー内でPrismaServiceの機能を使用できるようになります。</p>
+<p><strong>説明②</strong></p>
+<ol>
+<li><code>@Get("list")</code>デコレータは、このメソッドがHTTP GETリクエストを処理することを示しています。具体的には、<code>/todo/list</code>エンドポイントに対応しています。</li>
+<li><code>async getList()</code>メソッドは、タスクのリストを取得してクライアントに返すための処理を行っています。</li>
+<li><code>await this.prisma.task.findMany()</code>は、<code>PrismaService</code>の<code>task</code>モデル（テーブル）から全てのタスクを取得するためにPrismaの<code>findMany()</code>メソッドを使っています。この部分でデータベースからタスクのリストを非同期に取得しています。</li>
+<li><code>return [...result]</code>は、取得したタスクリストを配列としてクライアントに返しています。ここでは必要に応じてデータを変換して返すこともできます。</li>
+</ol>
+<p>このように、<code>TodoController</code>は<code>PrismaService</code>を使用してデータベースからタスクのリストを取得し、それをクライアントに返すシンプルなRESTエンドポイントを提供しています。</p>
+<h3 id="postメソッドの作成">Postメソッドの作成</h3>
+<p>タスクを追加していくために<code>Post</code>ルートを作成していきます。</p>
+<p><code>src/todo/create-task.dto.ts</code></p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #7F848E; font-style: italic">// `POST` `/todo` が受け取るリクエストの定義</span></span>
+<span class="line"><span style="color: #C678DD">export</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">class</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">CreateTaskDto</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">title</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">string</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span></code></pre>
+<p>タスクを追加するための処理をコントローラーに追加します。</p>
+<p><code>src/todo/todo.controller.ts</code></p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> { </span><span style="color: #E06C75">Body</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">Controller</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">Get</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">Post</span><span style="color: #ABB2BF"> } </span><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">'@nestjs/common'</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> { </span><span style="color: #E06C75">PrismaService</span><span style="color: #ABB2BF"> } </span><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">'src/prisma/prisma.service'</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> { </span><span style="color: #E06C75">CreateTaskDto</span><span style="color: #ABB2BF"> } </span><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">'./create-task.dto'</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">@</span><span style="color: #61AFEF">Controller</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">'todo'</span><span style="color: #ABB2BF">)</span></span>
+<span class="line"><span style="color: #C678DD">export</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">class</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">TodoController</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// ... </span></span>
+<span class="line"><span style="color: #ABB2BF">  @</span><span style="color: #61AFEF">Post</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">""</span><span style="color: #ABB2BF">)</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">async</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">add</span><span style="color: #ABB2BF">(@</span><span style="color: #61AFEF">Body</span><span style="color: #ABB2BF">() </span><span style="color: #E06C75; font-style: italic">task</span><span style="color: #ABB2BF">:</span><span style="color: #E5C07B">CreateTaskDto</span><span style="color: #ABB2BF">) { </span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">result</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">await</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">this</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">prisma</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">task</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">create</span><span style="color: #ABB2BF">({</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">data</span><span style="color: #ABB2BF">: </span><span style="color: #E06C75">task</span></span>
+<span class="line"><span style="color: #ABB2BF">    })</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">return</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">status </span><span style="color: #ABB2BF">: </span><span style="color: #98C379">"OK"</span></span>
+<span class="line"><span style="color: #ABB2BF">    }</span></span>
+<span class="line"><span style="color: #ABB2BF">  }</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span></code></pre>
+<p>ぱっと見でなんとなくわかるかと思いますが、以下にコードの説明を載せておきます。</p>
+<ol>
+<li>
+<p><code>@Controller('todo')</code>デコレータは、このコントローラーが<code>/todo</code>エンドポイントに関連付けられることを示しています。つまり、このコントローラーが<code>/todo</code>エンドポイントに対応しているということです。</p>
+</li>
+<li>
+<p><code>@Post("")</code>デコレータは、このメソッドがHTTP POSTリクエストを処理することを示しています。具体的には、<code>/todo</code>エンドポイントに対応しています。</p>
+</li>
+<li>
+<p><code>async add(@Body() task: CreateTaskDto)</code>メソッドは、新しいタスクを作成するための処理を行っています。<code>@Body()</code>デコレータによって、HTTPリクエストのボディに含まれるデータが<code>task</code>変数にバインドされます。</p>
+</li>
+<li>
+<p><code>CreateTaskDto</code>は、<code>TodoController</code>クラスと同じディレクトリにある<code>create-task.dto.ts</code>ファイルで定義されたデータ転送オブジェクト（DTO）です。これにより、リクエストのボディから受け取ったデータを検証し、型安全な方法で取り扱うことができます。</p>
+</li>
+<li>
+<p><code>await this.prisma.task.create({ data: task })</code>は、<code>PrismaService</code>の<code>task</code>モデル（テーブル）に新しいタスクを作成するためにPrismaの<code>create()</code>メソッドを使っています。<code>task</code>変数には、リクエストのボディから受け取った新しいタスクの情報が含まれています。</p>
+</li>
+<li>
+<p><code>return { status: "OK" }</code>は、新しいタスクの作成が成功したことをクライアントに通知するために、簡単なJSONオブジェクトを返しています。実際のアプリケーションでは、作成したタスクの情報や他の適切なレスポンスを返すことが一般的です。</p>
+</li>
+</ol>
+<p>このように、<code>TodoController</code>は<code>PrismaService</code>を使用して新しいタスクをデータベースに作成するRESTエンドポイントを提供しています。クライアントはHTTP POSTリクエストを送信し、タスクの情報をリクエストボディに含めることで新しいタスクを作成することができます。</p>
+<h4 id="実際にタスクが追加できるか確認していきます">実際にタスクが追加できるか確認していきます。</h4>
+<p>私はVSCode拡張機能のThunder Clientを使って確認します。</p>
+<p><img src="/blog/2023-10-01-2/Thunder-Client.png?width=1600&#x26;height=2080" alt=""></p>
+<p><code>Post</code>メソッドを<code>http://localhost:3000/todo</code>を指定してに<code>send</code>でリクエストを送信します。
+<code>JSON</code>フィールドに以下のようにテキストを入力します。</p>
+<p>![]/blog/2023-10-01-2(/post-req.png?width=1600&#x26;height=2080)</p>
+<p>追加できているか確認</p>
+<p><img src="/blog/2023-10-01-2/get-task.png?width=1600&#x26;height=2080" alt=""></p>
+<p><code>title</code>:<code>test</code>をいうタスクが追加されていますね。</p>
+<h3 id="バリデーションを追加">バリデーションを追加</h3>
+<p>空のデータを送るとエラーが出ます</p>
+<p>このエラーを回避するためにバリデーション機能を実装していきます。</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #abb2bf">$ npm i --save class-validator class-transformer</span></span></code></pre>
+<p><code>src/main.ts</code> に、 import 文と <code>app.useGlobalPipes</code> の記述を追加し、アプリケーションでバリデーションの機能を有効にできます</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> { </span><span style="color: #E06C75">NestFactory</span><span style="color: #ABB2BF"> } </span><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">'@nestjs/core'</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> { </span><span style="color: #E06C75">AppModule</span><span style="color: #ABB2BF"> } </span><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">'./app.module'</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> { </span><span style="color: #E06C75">ValidationPipe</span><span style="color: #ABB2BF"> } </span><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">'@nestjs/common'</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C678DD">async</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">function</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">bootstrap</span><span style="color: #ABB2BF">() {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">app</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">await</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">NestFactory</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">create</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">AppModule</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E5C07B">app</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">useGlobalPipes</span><span style="color: #ABB2BF">(</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">new</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">ValidationPipe</span><span style="color: #ABB2BF">({</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #7F848E; font-style: italic">//options here</span></span>
+<span class="line"><span style="color: #ABB2BF">    }),</span></span>
+<span class="line"><span style="color: #ABB2BF">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">await</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">app</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">listen</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">3000</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span>
+<span class="line"><span style="color: #61AFEF">bootstrap</span><span style="color: #ABB2BF">();</span></span></code></pre>
+<p><code>@IsNotEmpty()</code>でタイトルの表示を必須にできます。</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> {</span><span style="color: #E06C75">IsNotEmpty</span><span style="color: #ABB2BF">} </span><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">"class-validator"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C678DD">export</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">class</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">CreateTaskDto</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  @</span><span style="color: #61AFEF">IsNotEmpty</span><span style="color: #ABB2BF">()</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">title</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">string</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span></code></pre>
+<p>実際に空のデータを送信して、500 のエラーではなくステータスコードの 400 が受け取れることを確認しておきましょう。</p>
+<p><img src="/blog/2023-10-01-2/404.png?width=1600&#x26;height=2080" alt=""></p>
+<h3 id="updateメソッド作成"><code>Update</code>メソッド作成</h3>
+<p>完了したタスクを<code>list</code>から削除します。</p>
+<p><code>scr/todo/todo.controller.ts</code></p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #7F848E; font-style: italic">// Param の追加</span></span>
+<span class="line"><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> { </span><span style="color: #E06C75">Body</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">Controller</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">Get</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">Param</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">Post</span><span style="color: #ABB2BF"> } </span><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">'@nestjs/common'</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #7F848E; font-style: italic">// ...</span></span>
+<span class="line"><span style="color: #ABB2BF">@</span><span style="color: #61AFEF">Controller</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">'todo'</span><span style="color: #ABB2BF">)</span></span>
+<span class="line"><span style="color: #C678DD">export</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">class</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">TodoController</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// ...</span></span>
+<span class="line"><span style="color: #ABB2BF">  @</span><span style="color: #61AFEF">Post</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">":id/done"</span><span style="color: #ABB2BF">)</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">async</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">done</span><span style="color: #ABB2BF">(@</span><span style="color: #61AFEF">Param</span><span style="color: #ABB2BF">() </span><span style="color: #E06C75; font-style: italic">param</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">await</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">this</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">prisma</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">task</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">update</span><span style="color: #ABB2BF">({</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">data</span><span style="color: #ABB2BF">: {</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #E06C75">is_done</span><span style="color: #ABB2BF">: </span><span style="color: #D19A66">true</span></span>
+<span class="line"><span style="color: #ABB2BF">      },</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">where</span><span style="color: #ABB2BF">: {　</span><span style="color: #7F848E; font-style: italic">//説明①</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #E06C75">id</span><span style="color: #ABB2BF">: </span><span style="color: #61AFEF">parseInt</span><span style="color: #ABB2BF">(</span><span style="color: #E5C07B">param</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">id</span><span style="color: #ABB2BF">)</span></span>
+<span class="line"><span style="color: #ABB2BF">      }</span></span>
+<span class="line"><span style="color: #ABB2BF">    })</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">return</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">status </span><span style="color: #ABB2BF">: </span><span style="color: #98C379">"OK"</span></span>
+<span class="line"><span style="color: #ABB2BF">    }</span></span>
+<span class="line"><span style="color: #ABB2BF">  }</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span></code></pre>
+<p>このエンドポイントは、HTTP POSTリクエストを受け取り、指定されたIDのタスクの状態を完了（<code>is_done: true</code>）に更新する役割を持ちます。</p>
+<p>具体的に説明すると:</p>
+<ol>
+<li>
+<p><code>@Post(":id/done")</code>デコレータは、このメソッドがHTTP POSTリクエストを処理することを示しています。<code>:id</code>はプレースホルダーであり、実際のリクエストURLで指定されるタスクのIDを表します。<code>:done</code>はエンドポイントの一部であり、この部分がリクエストURLに含まれる必要があります。例えば、<code>/todo/1/done</code>というURLが指定された場合、IDが<code>1</code>のタスクの完了状態を更新することになります。</p>
+</li>
+<li>
+<p><code>async done(@Param() param)</code>メソッドは、指定されたIDのタスクを完了状態に更新するための処理を行っています。<code>@Param()</code>デコレータは、リクエストURLのパラメータを受け取るために使用されます。ここでは、<code>param</code>変数にリクエストURLから受け取ったパラメータが含まれます。</p>
+</li>
+<li>
+<p><code>await this.prisma.task.update({ ... })</code>は、<code>PrismaService</code>の<code>task</code>モデル（テーブル）に対してタスクの更新を行うためにPrismaの<code>update()</code>メソッドを使用しています。<code>data</code>オブジェクトには、更新したいタスクの属性が含まれており、ここでは<code>is_done: true</code>を指定してタスクを完了状態にします。<code>where</code>オブジェクトには、更新対象のタスクを特定するための条件を指定しています。この場合、<code>id</code>がリクエストから受け取ったパラメータ（<code>param.id</code>）と一致するタスクが更新されます。</p>
+</li>
+<li>
+<p><code>return { status: "OK" }</code>は、タスクの更新が成功したことをクライアントに通知するために、簡単なJSONオブジェクトを返しています。</p>
+</li>
+</ol>
+<p>このように、<code>TodoController</code>は<code>PrismaService</code>を使用して特定のIDのタスクを完了状態に更新するRESTエンドポイントを提供しています。クライアントはHTTP POSTリクエストを送信し、URLに対応するタスクのIDを指定することでタスクの完了状態を更新できます。</p>
+<p><strong>説明</strong>①</p>
+<p>​	update の際の where では、数値で id を指定する必要がありますが、通常 <code>@Param</code> 経由で渡される値は文字列として解釈されます。
+ここでは型エラーを防ぐために parseInt を使って数値へのキャストを行なって実装しています。</p>
+<p>コードが記述できたら、動作確認を進めましょう。URL で指定した id のタスクの <code>is_done</code> 列が変化すれば動作として問題ありません。</p>
+<p><code>task/list</code> のルートも以下のような形で where 条件を追加して、false のみを表示するようにすれば<code>list</code>から指定した<code>id</code>が除外されます。</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #7F848E; font-style: italic">//...</span></span>
+<span class="line"><span style="color: #ABB2BF">@</span><span style="color: #61AFEF">Controller</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">'todo'</span><span style="color: #ABB2BF">)</span></span>
+<span class="line"><span style="color: #C678DD">export</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">class</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">TodoController</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">//...</span></span>
+<span class="line"><span style="color: #ABB2BF">  @</span><span style="color: #61AFEF">Get</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">"list"</span><span style="color: #ABB2BF">)</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">async</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">getList</span><span style="color: #ABB2BF">() { </span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">result</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">await</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">this</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">prisma</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">task</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">findMany</span><span style="color: #ABB2BF">({</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">where</span><span style="color: #ABB2BF">: {</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #E06C75">is_done</span><span style="color: #ABB2BF">: </span><span style="color: #D19A66">false</span></span>
+<span class="line"><span style="color: #ABB2BF">      }</span></span>
+<span class="line"><span style="color: #ABB2BF">    })</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">return</span><span style="color: #ABB2BF"> [ </span></span>
+<span class="line"><span style="color: #ABB2BF">      ...</span><span style="color: #E06C75">result</span></span>
+<span class="line"><span style="color: #ABB2BF">    ]  </span></span>
+<span class="line"><span style="color: #ABB2BF">  }</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span></code></pre>
+<p>先ほど追加した<code>"title":"test</code>を更新してみましょう</p>
+<p><img src="/blog/2023-10-01-2/update1.png?width=1600&#x26;height=2080" alt=""></p>
+<p><code>list</code>データの配列から削除されているかの確認もしてみましょう</p>
+<p><img src="/blog/2023-10-01-2/update2.png?width=1600&#x26;height=2080" alt=""></p>
+<p>期待通りの挙動ができています。</p>
+<h3 id="バリデーション追加">バリデーション追加</h3>
+<p>今回の実装では、URL から渡された ID 値を parseInt で処理したため、ID の箇所に文字列が入るリクエスト、例えば <code>task/hoge/done</code> のようなアクセスでエラーが発生してしまいます。</p>
+<p><img src="/blog/2023-10-01-2/hoge.png?width=1600&#x26;height=2080" alt=""></p>
+<p>このようなリクエストを正しく処理するために、URL 上のパラメータについてもバリデーションの実装が必要になります。</p>
+<p><code>src/todo/update-task.dto.ts</code></p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> {</span><span style="color: #E06C75">IsNotEmpty</span><span style="color: #ABB2BF">,</span><span style="color: #E06C75">IsInt</span><span style="color: #ABB2BF">} </span><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">"class-validator"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C678DD">export</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">class</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">UpdateTaskDto</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  @</span><span style="color: #61AFEF">IsNotEmpty</span><span style="color: #ABB2BF">()</span></span>
+<span class="line"><span style="color: #ABB2BF">  @</span><span style="color: #61AFEF">IsInt</span><span style="color: #ABB2BF">()</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">id</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">number</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span></code></pre>
+<p><code>@IsInt()</code>デコレータは、<code>id</code>プロパティが整数であることを確認します。つまり、<code>id</code>が整数値でない場合はエラーが発生します。</p>
+<p><code>src/todo/todo.controller.ts</code></p>
+<p>変更前</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #7F848E; font-style: italic">//...</span></span>
+<span class="line"><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> { </span><span style="color: #E06C75">UpdateTaskDto</span><span style="color: #ABB2BF"> } </span><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">'./update-task.dto'</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">@</span><span style="color: #61AFEF">Controller</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">'todo'</span><span style="color: #ABB2BF">)</span></span>
+<span class="line"><span style="color: #C678DD">export</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">class</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">TodoController</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// ...</span></span>
+<span class="line"><span style="color: #ABB2BF">@</span><span style="color: #61AFEF">Post</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">":id/done"</span><span style="color: #ABB2BF">)</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">async</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">done</span><span style="color: #ABB2BF">(@</span><span style="color: #61AFEF">Param</span><span style="color: #ABB2BF">() </span><span style="color: #E06C75; font-style: italic">param</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">await</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">this</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">prisma</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">task</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">update</span><span style="color: #ABB2BF">({</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">data</span><span style="color: #ABB2BF">: {</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #E06C75">is_done</span><span style="color: #ABB2BF">: </span><span style="color: #D19A66">true</span></span>
+<span class="line"><span style="color: #ABB2BF">      },</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">where</span><span style="color: #ABB2BF">: {</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #E06C75">id</span><span style="color: #ABB2BF">: </span><span style="color: #61AFEF">parseInt</span><span style="color: #ABB2BF">(</span><span style="color: #E5C07B">param</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">id</span><span style="color: #ABB2BF">)</span></span>
+<span class="line"><span style="color: #ABB2BF">      }</span></span>
+<span class="line"><span style="color: #ABB2BF">    })</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">return</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">status</span><span style="color: #ABB2BF">: </span><span style="color: #98C379">"OK"</span></span>
+<span class="line"><span style="color: #ABB2BF">    }</span></span>
+<span class="line"><span style="color: #ABB2BF">  }</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span></code></pre>
+<p>変更後</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color: #282c34; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #7F848E; font-style: italic">//...</span></span>
+<span class="line"><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> { </span><span style="color: #E06C75">UpdateTaskDto</span><span style="color: #ABB2BF"> } </span><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">'./update-task.dto'</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">@</span><span style="color: #61AFEF">Controller</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">'todo'</span><span style="color: #ABB2BF">)</span></span>
+<span class="line"><span style="color: #C678DD">export</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">class</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">TodoController</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// ...</span></span>
+<span class="line"><span style="color: #ABB2BF">  @</span><span style="color: #61AFEF">Post</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">":id/done"</span><span style="color: #ABB2BF">)</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">async</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">done</span><span style="color: #ABB2BF">(@</span><span style="color: #61AFEF">Param</span><span style="color: #ABB2BF">() </span><span style="color: #E06C75; font-style: italic">param</span><span style="color: #ABB2BF">:</span><span style="color: #E5C07B">UpdateTaskDto</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">await</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">this</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">prisma</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">task</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">updateMany</span><span style="color: #ABB2BF">({</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">data</span><span style="color: #ABB2BF">: {</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #E06C75">is_done</span><span style="color: #ABB2BF">: </span><span style="color: #D19A66">true</span></span>
+<span class="line"><span style="color: #ABB2BF">      },</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">where</span><span style="color: #ABB2BF">: {</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #E06C75">id</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">param</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">id</span></span>
+<span class="line"><span style="color: #ABB2BF">      } </span></span>
+<span class="line"><span style="color: #ABB2BF">    })</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">return</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">status </span><span style="color: #ABB2BF">: </span><span style="color: #98C379">"OK"</span></span>
+<span class="line"><span style="color: #ABB2BF">    }</span></span>
+<span class="line"><span style="color: #ABB2BF">  }</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span></code></pre>
+<p>バリデーションの適応ができました。</p>
+<p><code>param.id</code> はparseInt 無しでそのまま id 値として利用することができ、リクエストの際に 文字列が来た場合に正しくエラーを表示することができるようになります。</p>
+<p>以上でtodoアプリのチュートリアルは終了します。</p></article><ul class="tags-container astro-vj4tpspi"><li class="inline-block my-1 underline-offset-4 astro-blwjyjpt"><a href="/tags/nestjs" class="text-sm pr-2 group astro-blwjyjpt" data-astro-transition-scope="astro-36ssibgs-2"><svg xmlns="http://www.w3.org/2000/svg" class=" scale-75 astro-blwjyjpt"><path d="M16.018 3.815 15.232 8h-4.966l.716-3.815-1.964-.37L8.232 8H4v2h3.857l-.751 4H3v2h3.731l-.714 3.805 1.965.369L8.766 16h4.966l-.714 3.805 1.965.369.783-4.174H20v-2h-3.859l.751-4H21V8h-3.733l.716-3.815-1.965-.37zM14.106 14H9.141l.751-4h4.966l-.752 4z" class="astro-blwjyjpt"></path></svg>
+&nbsp;<span class="astro-blwjyjpt">nestjs</span></a></li></ul></main><footer class="mt-auto astro-sz7xmlte"><div class="max-w-3xl mx-auto px-0"><hr class="border-skin-line" aria-hidden="true"></div><div class="footer-wrapper astro-sz7xmlte"><div class="social-icons flex astro-upu6fzxr"><a href="https://github.com/ryotarofr" tabindex="0" class="group inline-block link-button astro-upu6fzxr astro-5eunqzkt" title=" カプリコの森 on Github"><svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="icon-tabler"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path
+      d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
+    ></path>
+  </svg></a><a href="https://www.instagram.com/" tabindex="0" class="group inline-block link-button astro-upu6fzxr astro-5eunqzkt" title="カプリコの森 on Instagram"><svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="icon-tabler"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <rect x="4" y="4" width="16" height="16" rx="4"></rect>
+    <circle cx="12" cy="12" r="3"></circle>
+    <line x1="16.5" y1="7.5" x2="16.5" y2="7.501"></line>
+  </svg></a></div><div class="copyright-wrapper astro-sz7xmlte"><span class="astro-sz7xmlte">Copyright &#169; 2023</span><span class="separator astro-sz7xmlte">&nbsp;|&nbsp;</span><span class="astro-sz7xmlte">All rights reserved.</span></div><a href="/contact" tabindex="0" class="group inline-block undefined astro-5eunqzkt">
+contact
+</a><a href="/privacy" tabindex="0" class="group inline-block  text-sm astro-sz7xmlte astro-5eunqzkt">
+プライバシーポリシー
+</a></div></footer></body></html>
