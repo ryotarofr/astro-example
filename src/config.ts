@@ -2,15 +2,15 @@ import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
   website: "https://fr-next.dev/",
-  author: "kapucode",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
+  author: "カプコード",
+  desc: "web・モバイル技術の発信、テック情報のトレンドをキャッチアップ",
   title: "カプリコの森",
-  ogImage: "astropaper-og.jpg",
+  ogImage: "profile.jpeg",
   lightAndDarkMode: true,
   postPerPage: 3,
 };
 
-export const LOCALE = ["en-EN"]; // set to [] to use the environment default
+export const LOCALE = ["ja-JP"]; // set to [] to use the environment default
 
 export const LOGO_IMAGE = {
   enable: false,
