@@ -4,7 +4,7 @@ export const SITE: Site = {
   website: "https://fr-next.dev/",
   author: "カプコード",
   desc: "web・モバイル技術の発信、テック情報のトレンドをキャッチアップ",
-  title: "カプリコの森",
+  title: "カプコード",
   ogImage: "profile.jpeg",
   lightAndDarkMode: true,
   postPerPage: 3,
