@@ -1,63 +1,183 @@
 ---
-import { getCollection } from "astro:content";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
-import Tag from "@components/Tag.astro";
-import getUniqueTags from "@utils/getUniqueTags";
 import { SITE } from "@config";
-
-const posts = await getCollection("blog");
-
-// let tags = getUniqueTags(posts);
 ---
 
-<Layout title={`サイトについて | ${SITE.title}`}>
-  <Header activeNav="サイトについて" />
-  <Main pageTitle="このサイトについて">
-    <div class="section1">
-      <div>
-        こんにちは、当サイト「カプリコの森」に遊びに来ていただき、ありがとうございます。
+<Layout title={`サービス | ${SITE.title}`}>
+  <Header activeNav="サービス" />
+  <Main pageTitle="サービス">
+    <div>提供するサービスの強みや、制作の流れ、質問集を掲載しています。</div>
+    <div>
+      <h2
+        class="transform rounded-lg px-8 py-6 text-2xl shadow-md transition duration-300"
+      >
+        サービスの内容
+      </h2>
+      <div class="my-4 flex items-center">
+        <img
+          src="/assets/beginner.svg"
+          alt="beginner"
+          width="30"
+          height="30"
+          class="mx-4"
+        />
+        <p class="">
+          初学者の方へオリジナルのポートフォリオ作成のサポートを行います。
+        </p>
       </div>
-      <br />
-      <div>
-        このサイトカプリコの森は、管理人カプコードさんの個人ブログです。以下のような内容を発信しています。
+      <h3
+        class="transform rounded-lg px-8 py-6 text-2xl shadow-md transition duration-300"
+      >
+        <!-- <MdOutlineAddReaction /> -->
+         採用フレームワーク
+      </h3>
+      <div class="flex items-center">
+        <img
+          src="/assets/nextjs-logo.svg"
+          alt="nextjs-logo"
+          width="70"
+          height="70"
+        />
+        <li class="list-none">Next.js</li>
       </div>
+      <div class="item-center my-4 flex">
+        <img
+          src="/assets/typescript-logo.svg"
+          alt="nextjs-logo"
+          width="54"
+          height="54"
+          class="mx-2"
+        />
+        <li class="list-none">
+          TypeScript(昨今ではTypescriptに批判的な意見もありますので使用の有無は本人にお任せいたします)
+        </li>
+      </div>
+      <p>
+        現在、より深い知見の追求のため、Next.jsに特化してサポートをいたします。
+      </p>
       <br />
-      <ul class="ul">
-        <li>カプコードさんの考えについて</li>
-        <li>Web・モバイル技術のトレンドやドメイン知識の情報について</li>
-        <li>個人開発で作ったアプリについて</li>
-      </ul>
-      <br />
-      <hr class="hr" />
-      <div class="profile">著者のプロフィール</div>
-      <hr class="hr" />
-      <img src="/profile.jpeg" width="200px" class="img" />
-      <div>カプコードさん</div>
-      <div>
-        <!-- あとでかく -->
+      <h3 class="transform rounded-lg px-8 py-6 text-2xl shadow-md">
+        <!-- <MdOutlineRecommend /> -->
+         こんな方におすすめ
+      </h3>
+      <div class="my-4 flex items-center">
+        <img
+          src="/assets/check-icon.svg"
+          alt="nextjs-logo"
+          width="70"
+          height="70"
+        />
+        <li class="list-none">
+          React/Next.jsでオリジナルのwebアプリを作ってみたい
+        </li>
+      </div>
+      <div class="my-4 flex items-center">
+        <img
+          src="/assets/check-icon.svg"
+          alt="nextjs-logo"
+          width="70"
+          height="70"
+        />
+        <li class="list-none">
+          Next.jsの学習途中でエラー等の解決ができずに悩んでいる
+        </li>
+      </div>
+      <div class="my-4 flex items-center">
+        <img
+          src="/assets/check-icon.svg"
+          alt="nextjs-logo"
+          width="70"
+          height="70"
+        />
+        <li class="list-none">モダン技術やフルスタック技術を学んでみたい</li>
+      </div>
+      <div class="my-10">
+        <h3 class="transform rounded-lg px-8 py-6 text-2xl shadow-md">
+          <!-- <MdOutlineGppGood /> -->
+
+           本サービスが他社と差別化するために
+        </h3>
+        <div>
+          <h4 class="my-4">
+            <!-- <ImEqualizer /> -->
+            <span class="ml-4 text-xl">コーディングの品質</span>
+          </h4>
+          <li class="my-4 list-none">
+            我々は常に最新のベストプラクティスを追求してます。初学者の方でも柔軟で使いやすいコードの作り方をご説明します。
+          </li>
+          <br />
+          <h4 class="my-4">
+            <!-- <SiMicrosoftsqlserver /> -->
+            <span class="ml-4 text-xl">SSG,SSR</span>
+          </h4>
+          <li class="my-4 list-none">
+            静的サイトジェネレータ（SSG)、サーバーサイドレンダリング(SSR)を最大限活かした「ユーザーが使いやすいモノ」を目指します。
+          </li>
+          <br />
+          <h4 class="my-4">
+            <!-- <GiSpikesFull /> -->
+            <span class="ml-4 text-xl">フルスタック</span>
+          </h4>
+          <li class="my-4 list-none">
+            本サービスはNext.jsの利点を活かし、フロントエンドに加えバックエンドの開発を推奨します。近年ではフロントエンドエンジニアもapi操作やインフラの組み込み等、開発者として幅広い知見が求められるようになっていますので一緒に学んでいきましょう。
+          </li>
+          <br />
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2 class="transform rounded-lg px-8 py-6 text-2xl shadow-md">
+        完了までのフロー
+      </h2>
+      <p class="my-4">
+        お問い合わせをいただいてから、ポートフォリオ作成から完了までの流れは以下の通りです。
+      </p>
+      <div class="flex justify-center">
+        <ul class="max-w-xs">
+          <li
+            class="list-none rounded-full border-2 border-skin-accent px-4 py-2"
+          >
+            お問い合わせ
+          </li>
+          <div class="mx-auto h-10 w-2 border-l-2"></div>
+          <li
+            class="list-none rounded-full border-2 border-skin-accent px-4 py-2"
+          >
+            ヒアリング
+          </li>
+          <li
+            class="list-none rounded-full border-2 border-skin-accent px-4 py-2"
+          >
+            お申し込み
+          </li>
+          <li
+            class="list-none rounded-full border-2 border-skin-accent px-4 py-2"
+          >
+            制作
+          </li>
+          <li
+            class="list-none rounded-full border-2 border-skin-accent px-4 py-2"
+          >
+            確認・コードレビュ
+          </li>
+          <li
+            class="list-none rounded-full border-2 border-skin-accent px-4 py-2"
+          >
+            修正
+          </li>
+          <li
+            class="list-none rounded-full border-2 border-skin-accent px-4 py-2"
+          >
+            完成
+          </li>
+        </ul>
       </div>
     </div>
   </Main>
-  <Footer />
 </Layout>
+<Footer />
 
-<style>
-  .section1 {
-    @apply mx-auto my-4 w-full max-w-lg;
-  }
-  .ul {
-    @apply mx-7 list-disc;
-  }
-  .hr {
-    @apply my-2;
-  }
-  .profile {
-    @apply mx-4;
-  }
-  .img {
-    @apply mx-auto rounded-full;
-  }
-</style>
+<style></style>
