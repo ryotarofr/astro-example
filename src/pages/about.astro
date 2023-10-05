@@ -16,7 +16,15 @@ import { SITE } from "@config";
       >
         サービスの内容
       </h2>
-      <div class="my-4 flex items-center">
+      <div class="my-4 items-center md:flex">
+        <img
+          src="/assets/d.svg"
+          alt="woman"
+          width="200"
+          height="200"
+          class="mx-auto"
+        />
+
         <img
           src="/assets/beginner.svg"
           alt="beginner"
@@ -24,110 +32,132 @@ import { SITE } from "@config";
           height="30"
           class="mx-4"
         />
+
         <p class="">
           初学者の方へオリジナルのポートフォリオ作成のサポートを行います。
         </p>
       </div>
-      <h3
-        class="transform rounded-lg px-8 py-6 text-2xl shadow-md transition duration-300"
-      >
-        <!-- <MdOutlineAddReaction /> -->
-         採用フレームワーク
-      </h3>
-      <div class="flex items-center">
-        <img
-          src="/assets/nextjs-logo.svg"
-          alt="nextjs-logo"
-          width="70"
-          height="70"
-        />
-        <li class="list-none">Next.js</li>
-      </div>
-      <div class="item-center my-4 flex">
-        <img
-          src="/assets/typescript-logo.svg"
-          alt="nextjs-logo"
-          width="54"
-          height="54"
-          class="mx-2"
-        />
-        <li class="list-none">
-          TypeScript(昨今ではTypescriptに批判的な意見もありますので使用の有無は本人にお任せいたします)
-        </li>
-      </div>
-      <p>
-        現在、より深い知見の追求のため、Next.jsに特化してサポートをいたします。
-      </p>
-      <br />
-      <h3 class="transform rounded-lg px-8 py-6 text-2xl shadow-md">
-        <!-- <MdOutlineRecommend /> -->
-         こんな方におすすめ
-      </h3>
-      <div class="my-4 flex items-center">
-        <img
-          src="/assets/check-icon.svg"
-          alt="nextjs-logo"
-          width="70"
-          height="70"
-        />
-        <li class="list-none">
-          React/Next.jsでオリジナルのwebアプリを作ってみたい
-        </li>
-      </div>
-      <div class="my-4 flex items-center">
-        <img
-          src="/assets/check-icon.svg"
-          alt="nextjs-logo"
-          width="70"
-          height="70"
-        />
-        <li class="list-none">
-          Next.jsの学習途中でエラー等の解決ができずに悩んでいる
-        </li>
-      </div>
-      <div class="my-4 flex items-center">
-        <img
-          src="/assets/check-icon.svg"
-          alt="nextjs-logo"
-          width="70"
-          height="70"
-        />
-        <li class="list-none">モダン技術やフルスタック技術を学んでみたい</li>
-      </div>
-      <div class="my-10">
-        <h3 class="transform rounded-lg px-8 py-6 text-2xl shadow-md">
-          <!-- <MdOutlineGppGood /> -->
-
-           本サービスが他社と差別化するために
-        </h3>
-        <div>
-          <h4 class="my-4">
-            <!-- <ImEqualizer /> -->
-            <span class="ml-4 text-xl">コーディングの品質</span>
-          </h4>
-          <li class="my-4 list-none">
-            我々は常に最新のベストプラクティスを追求してます。初学者の方でも柔軟で使いやすいコードの作り方をご説明します。
+    </div>
+    <h3
+      class="transform rounded-lg px-8 py-6 text-2xl shadow-md transition duration-300"
+    >
+      採用フレームワーク
+    </h3>
+    <div class="md:flex">
+      <div>
+        <div class="flex items-center">
+          <img
+            src="/assets/nextjs-logo.svg"
+            alt="nextjs-logo"
+            width="70"
+            height="70"
+          />
+          <li class="list-none">Next.js</li>
+        </div>
+        <div class="item-center my-4 flex">
+          <img
+            src="/assets/typescript-logo.svg"
+            alt="nextjs-logo"
+            width="54"
+            height="54"
+            class="mx-2"
+          />
+          <li class="list-none">
+            TypeScript(昨今ではTypescriptに批判的な意見もありますので使用の有無は本人にお任せいたします)
           </li>
-          <br />
-          <h4 class="my-4">
-            <!-- <SiMicrosoftsqlserver /> -->
-            <span class="ml-4 text-xl">SSG,SSR</span>
-          </h4>
-          <li class="my-4 list-none">
-            静的サイトジェネレータ（SSG)、サーバーサイドレンダリング(SSR)を最大限活かした「ユーザーが使いやすいモノ」を目指します。
-          </li>
-          <br />
-          <h4 class="my-4">
-            <!-- <GiSpikesFull /> -->
-            <span class="ml-4 text-xl">フルスタック</span>
-          </h4>
-          <li class="my-4 list-none">
-            本サービスはNext.jsの利点を活かし、フロントエンドに加えバックエンドの開発を推奨します。近年ではフロントエンドエンジニアもapi操作やインフラの組み込み等、開発者として幅広い知見が求められるようになっていますので一緒に学んでいきましょう。
-          </li>
-          <br />
         </div>
       </div>
+      <img
+        src="/assets/f.svg"
+        alt="book"
+        width="400"
+        height="400"
+        class="mx-auto"
+      />
     </div>
+
+    <p>
+      現在、より深い知見の追求のため、Next.jsに特化してサポートをいたします。
+    </p>
+    <br />
+    <h3 class="transform rounded-lg px-8 py-6 text-2xl shadow-md">
+      こんな方におすすめ
+    </h3>
+    <div class="my-4 flex items-center">
+      <img
+        src="/assets/check-icon.svg"
+        alt="nextjs-logo"
+        width="70"
+        height="70"
+      />
+      <li class="list-none">
+        React/Next.jsでオリジナルのwebアプリを作ってみたい
+      </li>
+    </div>
+    <div class="my-4 flex items-center">
+      <img
+        src="/assets/check-icon.svg"
+        alt="nextjs-logo"
+        width="70"
+        height="70"
+      />
+      <li class="list-none">
+        Next.jsの学習途中でエラー等の解決ができずに悩んでいる
+      </li>
+    </div>
+    <div class="my-4 flex items-center">
+      <img
+        src="/assets/check-icon.svg"
+        alt="nextjs-logo"
+        width="70"
+        height="70"
+      />
+      <li class="list-none">モダン技術やフルスタック技術を学んでみたい</li>
+    </div>
+    <div class="my-10">
+      <h3 class="transform rounded-lg px-8 py-6 text-2xl shadow-md">
+        本サービスが他社と差別化するために
+      </h3>
+      <div class="my-4 md:flex md:space-x-4">
+        <div class="rounded-lg md:max-w-[256px] md:border">
+          <h4 class="my-4 md:text-center">
+            <span
+              class="ml-4 text-xl underline decoration-wavy decoration-2 underline-offset-4 md:ml-0"
+              >コーディングの品質</span
+            >
+          </h4>
+          <li class="my-4 list-none px-2 md:text-center">
+            我々は常に最新のベストプラクティスを追求してます。初学者の方でも柔軟で使いやすいコードの作り方をご説明します。
+          </li>
+        </div>
+        <br />
+        <div class="rounded-lg md:max-w-[256px] md:border">
+          <h4 class="my-4 md:text-center">
+            <span
+              class="ml-4 text-xl underline decoration-wavy decoration-2 underline-offset-4 md:ml-0"
+              >SSG,SSR</span
+            >
+          </h4>
+          <li class="my-4 list-none px-2 md:text-center">
+            静的サイトジェネレータ（SSG)、サーバーサイドレンダリング(SSR)を最大限活かした「ユーザーが使いやすいモノ」を目指します。
+          </li>
+        </div>
+        <br />
+        <div class="rounded-lg md:max-w-[256px] md:border">
+          <h4 class="my-4 md:text-center">
+            <span
+              class="ml-4 text-xl underline decoration-wavy decoration-2 underline-offset-4 md:ml-0"
+              >フルスタック</span
+            >
+          </h4>
+          <li class="my-4 list-none px-2 md:text-center">
+            本サービスはNext.jsの利点を活かし、フロントエンドに加えバックエンドの開発を推奨します。近年ではフロントエンドエンジニアもapi操作やインフラの組み込み等、開発者として幅広い知見が求められるようになっていますので一緒に学んでいきましょう。
+          </li>
+        </div>
+        <br />
+      </div>
+    </div>
+
     <div>
       <h2 class="transform rounded-lg px-8 py-6 text-2xl shadow-md">
         完了までのフロー
@@ -135,45 +165,112 @@ import { SITE } from "@config";
       <p class="my-4">
         お問い合わせをいただいてから、ポートフォリオ作成から完了までの流れは以下の通りです。
       </p>
-      <div class="flex justify-center">
-        <ul class="max-w-xs">
+      <div class="flex justify-center space-x-10">
+        <ul class="max-w-xs text-center">
           <li
             class="list-none rounded-full border-2 border-skin-accent px-4 py-2"
           >
-            お問い合わせ
+            &#x1F438; お問い合わせ
           </li>
-          <div class="mx-auto h-10 w-2 border-l-2"></div>
+          <div class="mx-auto h-10 w-2 border-l-2 border-skin-accent"></div>
           <li
             class="list-none rounded-full border-2 border-skin-accent px-4 py-2"
           >
-            ヒアリング
+            &#x1F438; ヒアリング &#x1F427;
           </li>
+          <div class="mx-auto h-10 w-2 border-l-2 border-skin-accent"></div>
           <li
             class="list-none rounded-full border-2 border-skin-accent px-4 py-2"
           >
-            お申し込み
+            &#x1F438; お申し込み
           </li>
+          <div class="mx-auto h-10 w-2 border-l-2 border-skin-accent"></div>
           <li
             class="list-none rounded-full border-2 border-skin-accent px-4 py-2"
           >
-            制作
+            &#x1F438; 制作 &#x1F427;
           </li>
+          <div class="mx-auto h-10 w-2 border-l-2 border-skin-accent"></div>
           <li
             class="list-none rounded-full border-2 border-skin-accent px-4 py-2"
           >
-            確認・コードレビュ
+            確認・コードレビュ &#x1F427;
           </li>
+          <div class="mx-auto h-10 w-2 border-l-2 border-skin-accent"></div>
           <li
             class="list-none rounded-full border-2 border-skin-accent px-4 py-2"
           >
-            修正
+            &#x1F438; 修正
           </li>
+          <div class="mx-auto h-10 w-2 border-l-2 border-skin-accent"></div>
           <li
             class="list-none rounded-full border-2 border-skin-accent px-4 py-2"
           >
-            完成
+            &#x1F438; 完成 &#x1F427;
           </li>
         </ul>
+        <div class="h-full rounded-md p-4 text-xl shadow-md">
+          <div
+            class="mb-2 underline decoration-wavy decoration-2 underline-offset-4"
+          >
+            Who does it
+          </div>
+          <div>&#x1F427;: 私</div>
+          <div>&#x1F438;: あなた</div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div>
+      <h2 class="transform rounded-lg px-8 py-6 text-2xl shadow-md">質問集</h2>
+      <div>
+        <div class="my-2 flex items-center">
+          <img
+            src="/assets/question.svg"
+            alt="question"
+            width="70"
+            height="70"
+          />
+          <h3 class="text-xl font-bold">
+            作りたいものがありません。どんなものを作るか決めていません。
+          </h3>
+        </div>
+        <p class="text-md sm:ml-[70px]">
+          一緒に考えましょう！
+          オリジナルのポートフォリオ作成のお手伝いをさせていただきます！
+        </p>
+      </div>
+      <div>
+        <div class="my-2 flex items-center">
+          <img
+            src="/assets/question.svg"
+            alt="question"
+            width="70"
+            height="70"
+          />
+          <h3 class="text-xl font-bold">
+            Next.js使ったことがありませんが大丈夫でしょうか？
+          </h3>
+        </div>
+        <p class="text-md sm:ml-[70px]">
+          Next.jsの仕組みからしっかり解説した記事をご用意しております。(そちらは完全公開しております。)そちらを見ていただけるとNext.jsの基礎は網羅できます。ですので事前にjavascriptの入門部分を理解していただいていれば問題ないです。
+        </p>
+      </div>
+      <div>
+        <div class="my-2 flex items-center">
+          <img
+            src="/assets/question.svg"
+            alt="question"
+            width="70"
+            height="70"
+          />
+          <h3 class="text-xl font-bold">
+            制作期間が伸びると追加で費用がかかりますか？
+          </h3>
+        </div>
+        <p class="text-md sm:ml-[70px]">
+          追加で費用が発生することはありません。納得のいくポートフォリオ完成まで一緒に頑張りましょう!
+        </p>
       </div>
     </div>
   </Main>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_2" data-name="レイヤー 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="0 0 610.09 263.11">
+  <defs>
+    <style>
+      @keyframes LINE {
+        0% {
+          stroke-dashoffset: 3000;
+          fill-opacity: 0;
+        }
+
+        100% {
+          stroke-dashoffset: 0;
+          fill-opacity: 0;
+        }
+      }
+
+      .cls-6 {
+        stroke-dasharray: 3000;
+        stroke-dashoffset: 3000;
+        animation: LINE 4s ease-in 2s infinite;
+        /* animation-delay: 2s; */
+      }
+
+      .cls-4 {
+        stroke-dasharray: 3000;
+        stroke-dashoffset: 3000;
+        animation: LINE 4s ease-in 10s infinite;
+        animation-delay: 5s;
+      }
+
+      .cls-5 {
+        stroke-dasharray: 3000;
+        stroke-dashoffset: 3000;
+        animation: LINE 4s ease-in 10s forwards;
+        animation-delay: 5s;
+      }
+
+      .cls-3 {
+        stroke-dasharray: 3000;
+        stroke-dashoffset: 3000;
+        animation: LINE 4s ease-in 10s forwards;
+        animation-delay: 5s;
+      }
+
+
+      .cls-2 {
+        stroke: rgb(50, 0, 255);
+
+
+        stroke-dasharray: 3000;
+        stroke-dashoffset: 3000;
+        animation: LINE 4s ease-in 10s infinite;
+        animation-delay: 5s;
+      }
+
+      .cls-1,
+      .cls-2 {
+        stroke-width: 5px;
+      }
+
+      .cls-1,
+      .cls-2,
+      .cls-3,
+      .cls-4,
+      .cls-5,
+      .cls-6 {
+        stroke-miterlimit: 10;
+      }
+
+
+      .cls-3,
+      .cls-4,
+      .cls-5,
+      .cls-6 {
+        stroke: #000;
+      }
+
+      .cls-2,
+      .cls-4,
+      .cls-5,
+      .cls-6 {
+        fill: #fbfbfb;
+      }
+
+      .cls-2,
+      .cls-5,
+      .cls-6 {
+        stroke-linecap: round;
+      }
+
+      .cls-3 {
+        fill: url(#_名称未設定グラデーション);
+        stroke-linecap: square;
+      }
+
+      .cls-3,
+      .cls-4,
+      .cls-6 {
+        stroke-width: 6px;
+      }
+
+      .cls-5 {
+        stroke-width: 3px;
+      }
+    </style>
+    <linearGradient id="_名称未設定グラデーション" data-name="名称未設定グラデーション" x1="278.14" y1="103.21" x2="303.65" y2="103.21"
+      gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" />
+      <stop offset="1" stop-color="#000" />
+    </linearGradient>
+  </defs>
+  <g id="_レイヤー_1-2" data-name="レイヤー 1">
+    <path class="cls-6"
+      d="M607.09,260.11h-187.31s-22.61-.16-51.84-56.42c-29.23-56.26,11.55-67.32-34.04-129.07-45.59-61.75-30.59-56.56-45.59-61.75s-17.75,39.19-2.04,54.59c15.7,15.41,21.92,31.41,18.67,55.4" />
+    <line class="cls-3" x1="303.65" y1="113.65" x2="278.14" y2="92.76" />
+    <path class="cls-4"
+      d="M141,42.29s-16.32-3.55-19.28,10.41,20.26,21.24,20.26,21.24v7.08s-17.11,.59-18.69,12.39,16.52,18.88,17.31,19.28,.39,7.28,.39,7.28c0,0-14.48,1.67-15.61,13.15s16.59,17.53,16.59,17.53v5.66s-11.32-1.25-13.92,11.56,12.92,16.43,12.92,16.43l138.81,74.29-277.67,1.53" />
+    <path class="cls-5" d="M299.15,142.05s-11.12,25.81,0,40.11" />
+    <line class="cls-5" x1="22.16" y1="217.23" x2="76.84" y2="217.23" />
+    <rect class="cls-5" x="141.77" y="2.5" width="133.92" height="233.65" rx="18.03" ry="18.03" />
+    <path class="cls-2"
+      d="M185.41,104.51c3.55-11.08,13.75-18.29,24.31-17.72,13.19,.72,23.27,13.37,22.25,26.38-.88,11.24-12.32,21.59-24.26,23.43,0,0-2.63,2.12-1.22,15.31" />
+    <line class="cls-2" x1="198.02" y1="217.23" x2="214.36" y2="217.23" />
+    <line class="cls-2" x1="192.54" y1="27.55" x2="221.44" y2="27.55" />
+    <line class="cls-5" x1="41.11" y1="202.72" x2="76.84" y2="202.72" />
+    <line class="cls-5" x1="32.77" y1="58.87" x2="73.56" y2="58.87" />
+    <line class="cls-5" x1="5.43" y1="71.38" x2="55.9" y2="71.38" />
+    <line class="cls-5" x1="1.5" y1="58.87" x2="25.28" y2="58.87" />
+    <line class="cls-5" x1="65.17" y1="145.52" x2="66.61" y2="144.08" />
+    <line class="cls-5" x1="30.08" y1="111.43" x2="34.08" y2="115.43" />
+    <line class="cls-5" x1="34.08" y1="119.72" x2="30.08" y2="123.72" />
+    <line class="cls-5" x1="42.15" y1="123.72" x2="38.16" y2="119.72" />
+    <line class="cls-5" x1="38.16" y1="115.43" x2="42.15" y2="111.43" />
+    <line class="cls-5" x1="65.17" y1="148.67" x2="66.61" y2="150.11" />
+    <line class="cls-5" x1="61.84" y1="148.67" x2="60.4" y2="150.11" />
+    <line class="cls-5" x1="61.84" y1="145.52" x2="60.4" y2="144.08" />
+    <line class="cls-5" x1="421.15" y1="197.88" x2="423.33" y2="195.8" />
+    <line class="cls-5" x1="421.15" y1="202.42" x2="423.33" y2="204.5" />
+    <line class="cls-5" x1="416.08" y1="202.42" x2="413.89" y2="204.5" />
+    <line class="cls-5" x1="416.08" y1="197.88" x2="413.89" y2="195.8" />
+  </g>
+</svg>
