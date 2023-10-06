@@ -1,0 +1,69 @@
+---
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Layout from "@layouts/Layout.astro";
+import Main from "@layouts/Main.astro";
+import { SITE } from "@config";
+---
+
+<Layout title={`制作 | ${SITE.title}`}>
+  <Header activeNav="制作" />
+  <Main pageTitle="制作">
+    <div>
+      <div class="my-2">
+        <h2 class="text-2xl">サービス内容</h2>
+        <p class="mx-2 my-1">モダン技術を取り入れた高速なサイトを制作</p>
+      </div>
+      <div class="my-2">
+        <h2 class="text-xl">できること</h2>
+        <div class="my-2">
+          <h3 class="text-lg">フロントエンド開発</h3>
+          <ul class="mx-2">
+            <li class="my-1">SSGを使った高速なページロードの実現</li>
+            <li class="my-1">OpenGraphやmetaデータの工夫でSEOを最適化</li>
+            <li class="my-1">レスポンシブデザイン</li>
+            <li class="my-1">
+              wordpressサイトをモダン技術を使用したサイトにリプレイス
+            </li>
+            <li class="my-1">CMSの組み込み</li>
+          </ul>
+        </div>
+        <div class="my-2">
+          <h3 class="text-lg">バックエンド開発</h3>
+          <ul class="mx-2">
+            <li class="my-1">Twitterのような投稿機能</li>
+            <li class="my-1">会員制のサブスク機能</li>
+            <li class="my-1">ショッピングサイト全般の機能</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl">プラン</h2>
+        <h3 class="text-lg">ベーシックプラン</h3>
+        <p>
+          デザインは用意していただき、コーディングからデプロイを行うプランです。
+        </p>
+        <p>用意していただくもの：サイトのワイヤーフレーム、文章、写真等</p>
+        <p>行うこと：サイトのコーディング、デプロイ</p>
+        <p>
+          料金：要相談(要件をお伺いした後、お求めやすい価格をご提案いたします)
+        </p>
+        <h3 class="text-lg">サイトデザインプラン</h3>
+        <p>用意していただくもの：文章、写真等</p>
+        <p>行うこと： UI等のデザイン、サイトのコーディング、デプロイ</p>
+        <p>料金：+3万円から</p>
+        <h3 class="text-lg">フルパッケージプラン</h3>
+        <p>サイト制作から集客までを一貫して行います。</p>
+        <p>
+          このプランでは、事業内容などのヒアリングから、最適なコンテンツ戦略を提案し、その上でサイトのデザインに落とし込み、サイト制作をいたします。
+        </p>
+        <p>料金：+50万円</p>
+        <div></div>
+      </div>
+    </div>
+  </Main>
+  <Footer />
+
+  <style></style>
+</Layout>

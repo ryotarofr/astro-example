@@ -6,9 +6,9 @@ import Main from "@layouts/Main.astro";
 import { SITE } from "@config";
 ---
 
-<Layout title={`サービス | ${SITE.title}`}>
-  <Header activeNav="サービス" />
-  <Main pageTitle="サービス">
+<Layout title={`メンター | ${SITE.title}`}>
+  <Header activeNav="メンター" />
+  <Main pageTitle="メンター">
     <div>提供するサービスの強みや、制作の流れ、質問集を掲載しています。</div>
     <div>
       <h2
@@ -273,8 +273,16 @@ import { SITE } from "@config";
         </p>
       </div>
     </div>
+    <div class="my-2">
+      <h2 class="transform rounded-lg px-8 py-6 text-2xl shadow-md">
+        お問い合わせ
+      </h2>
+      <p class="my-2">
+        メンターサービスを受講したい方は、ヒアリング日程を調整いたしますので以下フォームよりお問い合わせください
+      </p>
+      <div>ここにフォームボタン</div>
+    </div>
   </Main>
 </Layout>
 <Footer />
-
 <style></style>

@@ -31,3 +31,14 @@ Q & A
   ->一緒に考えましょう！オリジナルのポートフォリオ作成のお手伝いをさせていただきます！
 - Next.js使ったことがありませんが大丈夫でしょうか？
   ->Next.jsの仕組みからしっかり解説した記事をご用意しております。(そちらは完全公開しております。)そちらを見ていただけるとNext.jsの基礎は網羅できます。ですので事前にjavascriptの入門部分を理解していただいていれば問題ないです。
+
+申し込みフォームを作る
+参考
+フォーム
+https://tech-blog.rakus.co.jp/entry/20221028/rhf
+
+日時
+https://codesandbox.io/s/bbpdvq?file=/demo.tsx
+
+firestoreにデータ保存
+https://www.azukipan.com/posts/firebase-firestore-database-post/
