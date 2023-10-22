@@ -2,9 +2,9 @@ import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
   website: "https://fr-next.dev/",
-  author: "カプコード",
+  author: "ロキブログ",
   desc: "web・モバイル技術の発信、テック情報のトレンドをキャッチアップ",
-  title: "カプコード",
+  title: "ロキブログ",
   ogImage: "profile.jpeg",
   lightAndDarkMode: true,
   postPerPage: 3,
@@ -30,7 +30,7 @@ export const SOCIALS: SocialObjects = [
     name: "Instagram",
     href: "https://www.instagram.com/",
     linkTitle: `${SITE.title} on Instagram`,
-    active: true,
+    active: false,
   },
   {
     name: "Mail",

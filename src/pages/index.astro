@@ -23,7 +23,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   <Header />
   <main id="main-content">
     <section id="hero">
-      <h1 class="text-skin mr-2">技術備忘録</h1>
+      <h1 class="text-skin mr-2">移行中...(管理権限を移行中です。)</h1>
       <a
         target="_blank"
         href="/rss.xml"
@@ -43,9 +43,9 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       <p>
         <!-- すぐに忘れるのでここに頭を置いていきます。3ヶ月後の自分のためにやったことをまとめる。 -->
 
-         比較的新しい技術について発信しています。
+         世界情勢、歴史の真実を発信していきます。
       </p>
-      <p>
+      <!-- <p>
         サボってないかチェックする
         <LinkButton
           className="hover:text-skin-accent underline underline-offset-4 decoration-dashed"
@@ -53,7 +53,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         >
           ~README~
         </LinkButton>
-      </p>
+      </p> -->
       {
         // only display if at least one social link is enabled
         socialCount > 0 && (
@@ -96,7 +96,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     }
 
     <section id="recent-posts">
-      <h2>メモ置き場</h2>
+      <!-- <h2>メモ置き場</h2>
       <ul class="memo-wrapper">
         {
           sortedPosts
@@ -114,7 +114,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
                 )
             )
         }
-      </ul>
+      </ul> -->
     </section>
   </main>
 
